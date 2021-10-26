@@ -1,6 +1,21 @@
-import React from "react";
+import emailjs from "emailjs-com";
+import React,{ useRef } from "react";
+
 
 const Contact = () => {
+    const form = useRef();
+    function sendEmail(e){
+        e.preventDefault();
+
+    emailjs.sendForm('service_weznp4e', 'template_b6eqp4g', form.current, 'user_ej7IXBxwRqEPf11xbgSi9')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      e.target.reset()
+    }
+
 	return (
 		<div className="container">
 			<div className="py-4">
@@ -18,12 +33,9 @@ const Contact = () => {
 
        
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                
+           <div className="container">
+            <form ref={form} onSubmit={sendEmail} > 
                 <div class="row">
-
-                    
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <input type="text" id="name" name="name" class="form-control" />
@@ -49,9 +61,7 @@ const Contact = () => {
                     </div>
                 </div>
                 
-                <div class="row">
-
-                   
+                <div class="row">     
                     <div class="col-md-12">
 
                         <div class="md-form">
@@ -61,13 +71,13 @@ const Contact = () => {
 
                     </div>
                 </div>
-               
+                <div class="text-center text-md-left">
+                <input type="submit" className="btn btn-info" value="Send" ></input>
+                </div>
 
             </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
             </div>
+            
             <div class="status"></div>
         </div>
 

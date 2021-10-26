@@ -30,6 +30,14 @@
       "phone": "2222222222222",
       "website": "22222222222222222",
       "id": 2
+    },
+    {
+      "name": "Nikesh vish",
+      "username": "nikeshv442",
+      "email": "admin@gmail.com",
+      "phone": "2222222222222",
+      "website": "ww.cpm",
+      "id": 3
     }
   ]
 }
